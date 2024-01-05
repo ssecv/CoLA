@@ -1,9 +1,11 @@
+# CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection
+This repository hosts the code of the research presented in "CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection". We provide both **PyTorch** and **MindSpore** versions of the code.
 
-# Project Title
-
+![intro](img/model.png)
 ## Environment Requirements
 - Python 3.8
-- PyTorch 1.9
+- PyTorch 2.1
+- torch-npu 2.1.0
 - torchvision
 
 ## Installation
@@ -33,7 +35,7 @@ Similar to training, the testing configurations can be found and altered in `opt
 
 
 ## File Structure
-
+This repository is organized into two primary directories to accommodate both **PyTorch** and **MindSpore** codebases, ensuring compatibility and ease of use across different deep learning frameworks. Each directory mirrors the following structure:
 - `options.py`: Configuration file where all the settings for training and testing are modified.
 - `ResNet.py`: Contains ResNet-related backbone models and configurations.
 - `test.py`: The script used for testing the models.
