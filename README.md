@@ -1,4 +1,4 @@
-# CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection
+# [ECCV 2024] CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection
 This repository hosts the code of the research presented in "CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection". We provide both **PyTorch** and **MindSpore** versions of the code.
 
 ![intro](img/model.png)
