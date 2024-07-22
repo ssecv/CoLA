@@ -1,4 +1,7 @@
 # [ECCV 2024] CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/cola-conditional-dropout-and-language-driven/rgb-d-salient-object-detection-on-nju2k)](https://paperswithcode.com/sota/rgb-d-salient-object-detection-on-nju2k?p=cola-conditional-dropout-and-language-driven)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/cola-conditional-dropout-and-language-driven/rgb-d-salient-object-detection-on-nlpr)](https://paperswithcode.com/sota/rgb-d-salient-object-detection-on-nlpr?p=cola-conditional-dropout-and-language-driven)
+
 This repository hosts the code of the research presented in "CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection". We provide both **PyTorch** and **MindSpore** versions of the code.
 
 ![intro](img/model.png)
@@ -45,3 +48,12 @@ This repository is organized into two primary directories to accommodate both **
 - `clip`: Files related to the CLIP model.
 - `Net.py`: The main network architecture.
 
+## Citation
+```BibTeX
+@inproceedings{eccv2024cola,
+  title={CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection},
+  author={Hao, Shuang and Zhong, Chunlin and Tang, He},
+  booktitle={European Conference on Computer Vision,
+  year={2024}
+}
+```
