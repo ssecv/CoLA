@@ -2,7 +2,7 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/cola-conditional-dropout-and-language-driven/rgb-d-salient-object-detection-on-nju2k)](https://paperswithcode.com/sota/rgb-d-salient-object-detection-on-nju2k?p=cola-conditional-dropout-and-language-driven)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/cola-conditional-dropout-and-language-driven/rgb-d-salient-object-detection-on-nlpr)](https://paperswithcode.com/sota/rgb-d-salient-object-detection-on-nlpr?p=cola-conditional-dropout-and-language-driven)
 
-This repository hosts the code of the research presented in "CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection". We provide both **PyTorch** and **MindSpore** versions of the code.
+This repository hosts the code of the research presented in "[CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection](https://www.arxiv.org/abs/2407.06780#)". We provide both **PyTorch** and **MindSpore** versions of the code.
 
 ![intro](img/model.png)
 ## Environment Requirements
