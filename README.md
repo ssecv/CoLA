@@ -7,7 +7,7 @@ This repository hosts the code of the research presented in "[CoLA: Conditional 
 ![intro](img/model.png)
 ## Environment Requirements
 - Python 3.8
-- PyTorch 2.1
+- PyTorch 1.13.1
 - torch-npu 2.1.0
 - torchvision
 
@@ -15,7 +15,7 @@ This repository hosts the code of the research presented in "[CoLA: Conditional 
 To set up the necessary environment, follow these steps:
 
 ```bash
-pip install torch==1.9 torchvision
+pip install torch==1.13.1 torchvision
 ```
 
 ## Training
