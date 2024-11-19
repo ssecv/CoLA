@@ -18,9 +18,8 @@ from PIL import Image
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 # set the device for training
-if opt.gpu_id=='0':
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-    print('USE GPU 0')
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+
 
 #build the model
 model = BaselineControlNet()

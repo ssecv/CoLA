@@ -117,11 +117,11 @@ class SaliencyNet(nn.Module):
         self.ca = CA(128)
         self.CAs = [self.ca4, self.ca3, self.ca2, self.ca1, self.ca]
 
-        self.ChannelConv4 = ChannelConv(2048,1024)
-        self.ChannelConv3= ChannelConv(1024,512)
-        self.ChannelConv2= ChannelConv(512,256)
-        self.ChannelConv1 = ChannelConv(256, 64)
-        self.Chan_conv = [self.ChannelConv4, self.ChannelConv3, self.ChannelConv2, self.ChannelConv1]
+        self.d4_r = ChannelConv(2048,1024)
+        self.d3_r= ChannelConv(1024,512)
+        self.d2_r= ChannelConv(512,256)
+        self.d1_r = ChannelConv(256, 64)
+        self.Chan_conv = [self.d4_r, self.d3_r, self.d2_r, self.d1_r]
 
         self.score4 = nn.Conv2d(1024, 1, 1, 1, 0)
         self.score3 = nn.Conv2d(512, 1, 1, 1, 0)
@@ -265,8 +265,11 @@ class Baseline(nn.Module):
         return x_t + x_t.mul(attention_map)
     
     def initialize_weights(self):
-        res101 = models.resnet101(pretrained=True)
-        pretrained_dict = res101.state_dict()
+        if opt.pre_model == 'ResNet-50':
+            res = models.resnet50(pretrained=True)
+        if opt.pre_model == 'ResNet-101':
+            res = models.resnet101(pretrained=True)
+        pretrained_dict = res.state_dict()
         all_params = {}
         for k, v in self.resnet.state_dict().items():
             if k in pretrained_dict.keys():
@@ -312,7 +315,7 @@ class Decoder(nn.Module):
         #Decoder
         result_r,u4,u3,u2,u1 = self.s_net(x, x_layers, x_t_layers, alpha)
         result_r=self.sigmoid(result_r)
-        u4=self.sigmoid(u4)
+        u4 = self.sigmoid(u4)
         u3 = self.sigmoid(u3)
         u2 = self.sigmoid(u2)
         u1 = self.sigmoid(u1)
@@ -321,7 +324,7 @@ class Decoder(nn.Module):
 class zeroConv(nn.Module):
     def __init__(self):
         super(zeroConv, self).__init__()
-        self.ori_ctrl_zero = zero_module(nn.Conv2d(3, 3, kernel_size=1))
+        self.tt_ctrl_zero = zero_module(nn.Conv2d(3, 3, kernel_size=1))
         self.x_ctrl_zero = zero_module(nn.Conv2d(64, 64, kernel_size=1))
         self.x1_ctrl_zero = zero_module(nn.Conv2d(256, 256, kernel_size=1))
         self.x2_ctrl_zero = zero_module(nn.Conv2d(512, 512, kernel_size=1))
@@ -332,7 +335,7 @@ class zeroConv(nn.Module):
         self.x_t1_ctrl_zero = zero_module(nn.Conv2d(256, 256, kernel_size=1))
         self.x_t2_ctrl_zero = zero_module(nn.Conv2d(512, 512, kernel_size=1))
         self.x_t3_ctrl_zero = zero_module(nn.Conv2d(1024, 1024, kernel_size=1))
-        self.last_ctrl_zero = zero_module(nn.Conv2d(1, 1, kernel_size=1))
+        self.ttt_ctrl_zero = zero_module(nn.Conv2d(1, 1, kernel_size=1))
 
     def forward(self, x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl):
         x_layers_ctrl[0] = self.x_ctrl_zero(x_layers_ctrl[0])
@@ -345,7 +348,7 @@ class zeroConv(nn.Module):
         x_t_layers_ctrl[2] = self.x_t2_ctrl_zero(x_t_layers_ctrl[2])
         x_t_layers_ctrl[3] = self.x_t3_ctrl_zero(x_t_layers_ctrl[3])
         x_t_layers_ctrl[4] = self.x_t4_ctrl_zero(x_t_layers_ctrl[4])
-        last_x_feature_ctrl = self.last_ctrl_zero(last_x_feature_ctrl)
+        last_x_feature_ctrl = self.ttt_ctrl_zero(last_x_feature_ctrl)
         return x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl
 
 class CLIPAlpha(nn.Module):
@@ -387,16 +390,28 @@ class BaselineControlNet(nn.Module):
         self.decoder = Decoder()
         self.clip_alpha = CLIPAlpha()
 
-    def forward(self,x,x_t,image_clips,epoch):
-        if epoch > opt.change_epoch:
-            x,x_t,p = modality_drop(x, x_t)
-        else :
+    def forward(self,x,x_t,image_clips,epoch = None):
+        if self.training:
+            if epoch > opt.change_epoch:
+                x,x_t,p = modality_drop(x, x_t)
+            else :
+                p = torch.full((x.size(0), 2, 1, 1, 1), 1).to('cuda:0')
+        else:
             p = torch.full((x.size(0), 2, 1, 1, 1), 1).to('cuda:0')
         x_copy = x
         x_t_copy = x_t
         alpha = self.clip_alpha(image_clips, x.shape[0],p)
         x_layers, x_t_layers, last_x_feature = self.baseline(x, x_t, alpha)
-        if epoch > opt.change_epoch:
+        if self.training:
+            if epoch > opt.change_epoch:
+                x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl = self.baseline_ctrl(x_copy, x_t_copy, alpha)
+                x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl = self.zeroConv(x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl)
+                for i in range(len(x_layers)):
+                    x_layers[i] = x_layers[i] + x_layers_ctrl[i]
+                for i in range(len(x_t_layers)):
+                    x_t_layers[i] = x_t_layers[i] + x_t_layers_ctrl[i]
+                last_x_feature = last_x_feature + last_x_feature_ctrl
+        else:
             x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl = self.baseline_ctrl(x_copy, x_t_copy, alpha)
             x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl = self.zeroConv(x_layers_ctrl, x_t_layers_ctrl, last_x_feature_ctrl)
             for i in range(len(x_layers)):
