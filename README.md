@@ -34,8 +34,6 @@ For testing the model, use the following command:
 python test.py
 ```
 
-Similar to training, the testing configurations can be found and altered in `options.py`.
-
 
 ## File Structure
 This repository is organized into two primary directories to accommodate both **PyTorch** and **MindSpore** codebases, ensuring compatibility and ease of use across different deep learning frameworks. Each directory mirrors the following structure:
