@@ -51,7 +51,7 @@ This repository is organized into two primary directories to accommodate both **
 @inproceedings{eccv2024cola,
   title={CoLA: Conditional Dropout and Language-driven Robust Dual-modal Salient Object Detection},
   author={Hao, Shuang and Zhong, Chunlin and Tang, He},
-  booktitle={European Conference on Computer Vision,
+  booktitle={European Conference on Computer Vision},
   year={2024}
 }
 ```
