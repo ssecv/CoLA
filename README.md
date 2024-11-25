@@ -44,6 +44,12 @@ RGB-D Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1xNujvv0zoHDU6GD
 
 Google Drive link:https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing
 
+## Evaluation
+We use the following links for evaluation.
+
+https://github.com/zyjwuyan/SOD_Evaluation_Metrics
+
+
 
 ## File Structure
 This repository is organized into two primary directories to accommodate both **PyTorch** and **MindSpore** codebases, ensuring compatibility and ease of use across different deep learning frameworks. Each directory mirrors the following structure:
