@@ -36,8 +36,13 @@ For testing the model, use the following command:
 ```bash
 python test.py
 ```
-Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1C_dsuWNoq7w4WAFZ1zDgOw?pwd=3954 code: 3954 
-Google Drive link:
+RGB-T Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1C_dsuWNoq7w4WAFZ1zDgOw?pwd=3954 code: 3954 
+
+Google Drive link:https://drive.google.com/file/d/1TDv8cr4g6ZtlrDGLm1D1EYy2IViXZIk9/view?usp=sharing
+
+RGB-D Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1xNujvv0zoHDU6GDoNRvYtQ?pwd=bkr8 code: bkr8 
+
+Google Drive link:https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing
 
 
 ## File Structure
