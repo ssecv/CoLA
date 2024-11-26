@@ -18,8 +18,9 @@ To set up the necessary environment, follow these steps:
 pip install torch==1.13.1 torchvision
 ```
 ## Dataset
-RGB-T dataset:
-RGB-D dataset
+You can download the RGB-T dataset in :[Baidu Netdisk](https://pan.baidu.com/s/15PaIkKvxld-15tUmlNZqKA?pwd=f2ms)(code: f2ms)
+
+You can download the RGB-D dataset in :[Baidu Netdisk](https://pan.baidu.com/s/1SnBM23Kl9qSbA9ZFqptNPA?pwd=jciu)(code: jciu)
 
 ## Training
 To train the model, run the following command:
