@@ -36,22 +36,12 @@ For testing the model, use the following command:
 ```bash
 python test.py
 ```
-RGB-T Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1C_dsuWNoq7w4WAFZ1zDgOw?pwd=3954 
+You can download the RGB-T Checkpoint in [Baidu Netdisk](https://pan.baidu.com/s/1C_dsuWNoq7w4WAFZ1zDgOw?pwd=3954)(code: 3954) or [Google Drive](https://drive.google.com/file/d/1TDv8cr4g6ZtlrDGLm1D1EYy2IViXZIk9/view?usp=sharing).
 
-code: 3954 
-
-Google Drive link:https://drive.google.com/file/d/1TDv8cr4g6ZtlrDGLm1D1EYy2IViXZIk9/view?usp=sharing
-
-RGB-D Checkpoint’s Baidu Netdisk link:https://pan.baidu.com/s/1xNujvv0zoHDU6GDoNRvYtQ?pwd=bkr8 
-
-code: bkr8 
-
-Google Drive link:https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing
+You can download the RGB-D Checkpoint in [Baidu Netdisk](https://pan.baidu.com/s/1xNujvv0zoHDU6GDoNRvYtQ?pwd=bkr8)(code: bkr8) or [Google Drive](https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing).
 
 ## Evaluation
-We use the following links for evaluation.
-
-https://github.com/zyjwuyan/SOD_Evaluation_Metrics
+We use the following [links](https://github.com/zyjwuyan/SOD_Evaluation_Metrics) for evaluation.
 
 
 
