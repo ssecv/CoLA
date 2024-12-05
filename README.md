@@ -39,8 +39,7 @@ python test.py
 ```
 You can download the RGB-T Checkpoint in [Baidu Netdisk](https://pan.baidu.com/s/1C_dsuWNoq7w4WAFZ1zDgOw?pwd=3954)(code: 3954) or [Google Drive](https://drive.google.com/file/d/1TDv8cr4g6ZtlrDGLm1D1EYy2IViXZIk9/view?usp=sharing).
 
-You can download the RGB-D Checkpoint in [Baidu Netdisk](https://pan.baidu.com/s/1xNujvv0zoHDU6GDoNRvYtQ?pwd=bkr8)(code: bkr8) or [Google Drive](https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing).
-
+You can download the RGB-D Checkpoint in [Baidu Netdisk](https://pan.baidu.com/s/1qxxPj6VBBaOAeV619BS_sQ?pwd=192l)(code: 1921) or [Google Drive](https://drive.google.com/file/d/1TF2QGLr_fT2hvuZcJeRpl8Ofx5yAC9ce/view?usp=sharing).
 ## Evaluation
 We use the following [links](https://github.com/zyjwuyan/SOD_Evaluation_Metrics) for evaluation.
 
